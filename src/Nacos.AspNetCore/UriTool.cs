@@ -142,8 +142,7 @@ namespace Nacos.AspNetCore
                 // 获取所有可用网卡IP信息
                 var ipCollection = nics?.Select(x => x.GetIPProperties())?.SelectMany(x => x.UnicastAddresses);
 
-                var preferredNetworksArr = string.IsNullOrEmpty(preferredNetworks)
-                    ? new string[0] : preferredNetworks.Split(",");
+                var preferredNetworksArr = preferredNetworks.Split(",");
                 foreach (var ipadd in ipCollection)
                 {
                     if (!IPAddress.IsLoopback(ipadd.Address) &&
